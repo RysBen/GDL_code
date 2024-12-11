@@ -167,7 +167,8 @@ class Autoencoder():
         custom_callback = CustomCallback(run_folder, print_every_n_batches, initial_epoch, self)
         lr_sched = step_decay_schedule(initial_lr=self.learning_rate, decay_factor=lr_decay, step_size=1)
 
-        checkpoint2 = ModelCheckpoint(os.path.join(run_folder, 'weights/weights.h5'), save_weights_only = True, verbose=1)
+        #checkpoint2 = ModelCheckpoint(os.path.join(run_folder, 'weights/weights.h5'), save_weights_only = True, verbose=1)
+        checkpoint2 = ModelCheckpoint(os.path.join(run_folder, 'weights/weights.weights.h5'), save_weights_only = True, verbose=1)
 
         callbacks_list = [checkpoint2, custom_callback, lr_sched]
 
