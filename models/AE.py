@@ -1,3 +1,4 @@
+import tensorflow as tf
 
 from keras.layers import Input, Conv2D, Flatten, Dense, Conv2DTranspose, Reshape, Lambda, Activation, BatchNormalization, LeakyReLU, Dropout
 from keras.models import Model
@@ -127,7 +128,8 @@ class Autoencoder():
         optimizer = Adam(learning_rate=learning_rate)
 
         def r_loss(y_true, y_pred):
-            return K.mean(K.square(y_true - y_pred), axis = [1,2,3])
+            #return K.mean(K.square(y_true - y_pred), axis = [1,2,3])
+            return tf.reduce_mean(tf.square(y_true - y_pred), axis = [1,2,3])
 
         self.model.compile(optimizer=optimizer, loss = r_loss)
 
